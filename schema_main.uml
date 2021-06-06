@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>e1454466-c2b7-4286-9147-145e6d0752f7.SCHEMA:main</OriginalElement>
+  <nodes>
+    <node x="675.75" y="382.5">e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.reaction_names</node>
+    <node x="127.75" y="-43.0">e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.metabolites</node>
+    <node x="616.75" y="-43.0">e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.representative_reactions</node>
+    <node x="912.0" y="382.5">e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.literature_references</node>
+    <node x="458.75" y="382.5">e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.reaction_annotations</node>
+    <node x="344.5" y="636.5">e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.namespaces</node>
+    <node x="247.25" y="382.5">e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.metabolite_names</node>
+    <node x="-5.25" y="382.5">e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.metabolite_annotations</node>
+    <node x="1185.0" y="-43.0">e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.users</node>
+    <node x="408.5625" y="-43.0">e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.participants</node>
+    <node x="912.0" y="-43.0">e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.curated_measurements</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.metabolite_annotations" target="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.namespaces" relationship="REFERENCES">
+      <point x="0.0" y="98.0" />
+      <point x="103.25" y="608.0" />
+      <point x="441.0" y="608.0" />
+      <point x="0.0" y="-121.0" />
+    </edge>
+    <edge source="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.metabolite_names" target="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.namespaces" relationship="REFERENCES">
+      <point x="88.0" y="0.0" />
+      <point x="441.0" y="480.5" />
+      <point x="0.0" y="-121.0" />
+    </edge>
+    <edge source="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.reaction_annotations" target="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.namespaces" relationship="REFERENCES">
+      <point x="-98.5" y="0.0" />
+      <point x="441.0" y="480.5" />
+      <point x="0.0" y="-121.0" />
+    </edge>
+    <edge source="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.participants" target="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.metabolites" relationship="REFERENCES">
+      <point x="-81.99950000000001" y="0.0" />
+      <point x="362.0" y="20.5" />
+      <point x="362.0" y="89.5" />
+      <point x="93.5" y="0.0" />
+    </edge>
+    <edge source="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.reaction_names" target="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.representative_reactions" relationship="REFERENCES">
+      <point x="0.0" y="-98.0" />
+      <point x="758.25" y="326.0" />
+      <point x="595.0" y="326.0" />
+      <point x="595.0" y="32.0" />
+      <point x="-112.0" y="0.0" />
+    </edge>
+    <edge source="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.curated_measurements" target="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.users" relationship="REFERENCES">
+      <point x="121.5" y="110.0" />
+      <point x="1281.5" y="222.5" />
+      <point x="1281.5" y="203.0" />
+      <point x="1266.5" y="203.0" />
+      <point x="0.0" y="75.0" />
+    </edge>
+    <edge source="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.participants" target="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.representative_reactions" relationship="REFERENCES">
+      <point x="82.00049999999999" y="0.0" />
+      <point x="595.0" y="20.5" />
+      <point x="595.0" y="32.0" />
+      <point x="-112.0" y="0.0" />
+    </edge>
+    <edge source="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.reaction_names" target="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.namespaces" relationship="REFERENCES">
+      <point x="0.0" y="98.0" />
+      <point x="758.25" y="608.0" />
+      <point x="441.0" y="608.0" />
+      <point x="0.0" y="-121.0" />
+    </edge>
+    <edge source="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.curated_measurements" target="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.representative_reactions" relationship="REFERENCES">
+      <point x="0.0" y="155.5" />
+      <point x="1033.5" y="326.0" />
+      <point x="595.0" y="326.0" />
+      <point x="595.0" y="32.0" />
+      <point x="-112.0" y="0.0" />
+    </edge>
+    <edge source="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.metabolite_names" target="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.metabolites" relationship="REFERENCES">
+      <point x="0.0" y="-98.0" />
+      <point x="335.25" y="326.0" />
+      <point x="362.0" y="326.0" />
+      <point x="362.0" y="89.5" />
+      <point x="93.5" y="0.0" />
+    </edge>
+    <edge source="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.metabolite_annotations" target="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.metabolites" relationship="REFERENCES">
+      <point x="0.0" y="-98.0" />
+      <point x="103.25" y="326.0" />
+      <point x="362.0" y="326.0" />
+      <point x="362.0" y="89.5" />
+      <point x="93.5" y="0.0" />
+    </edge>
+    <edge source="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.reaction_annotations" target="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.representative_reactions" relationship="REFERENCES">
+      <point x="0.0" y="-98.0" />
+      <point x="557.25" y="326.0" />
+      <point x="595.0" y="326.0" />
+      <point x="595.0" y="32.0" />
+      <point x="-112.0" y="0.0" />
+    </edge>
+    <edge source="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.curated_measurements" target="e1454466-c2b7-4286-9147-145e6d0752f7.TABLE:main.literature_references" relationship="REFERENCES">
+      <point x="15.0" y="155.5" />
+      <point x="40.0" y="-109.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="671.0" y="418.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
