@@ -16,7 +16,7 @@
 """Provide an association between a reaction and its participating metabolites."""
 
 
-from sqlalchemy import Boolean, Column, ForeignKey, Integer
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, Float
 
 from .base import Base
 
@@ -37,7 +37,7 @@ class Participant(Base):
         Integer, ForeignKey("representative_reactions.id"), primary_key=True
     )
     metabolite_id: int = Column(Integer, ForeignKey("metabolites.id"), primary_key=True)
-    stoichiometry: int = Column(Integer, nullable=False)
+    stoichiometry: int = Column(Float, nullable=False)
     is_product: bool = Column(Boolean, nullable=False)
 
     def __repr__(self):
