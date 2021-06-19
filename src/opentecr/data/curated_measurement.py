@@ -5,6 +5,7 @@ from pydantic import Field
 from .base import Base
 from .contributor import Contributor
 from .literature_reference import LiteratureReference
+from .representative_reaction import RepresentativeReaction
 
 
 class CuratedMeasurement(Base):
