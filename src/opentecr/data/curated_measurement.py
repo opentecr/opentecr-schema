@@ -9,6 +9,7 @@ from .representative_reaction import RepresentativeReaction
 
 
 class CuratedMeasurement(Base):
+    """Define a curated measurement of thermodynamic information and context."""
 
     reference: LiteratureReference = Field(
         ...,
