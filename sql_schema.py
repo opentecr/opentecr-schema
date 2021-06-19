@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 
-from orm import Base
+from opentecr.orm import Base
 
 
 def main():
