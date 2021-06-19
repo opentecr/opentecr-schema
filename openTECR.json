@@ -1,0 +1,191 @@
+{
+  "title": "openTECR Data Model",
+  "definitions": {
+    "LiteratureReference": {
+      "title": "LiteratureReference",
+      "description": "Define a customized base model.",
+      "type": "object",
+      "properties": {
+        "pubmedId": {
+          "title": "PubMed Identifier",
+          "type": "string"
+        },
+        "doi": {
+          "title": "Digital Object Identifier (DOI)",
+          "type": "string"
+        },
+        "url": {
+          "title": "Universal Resource Locator (URL)",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "authors": {
+          "title": "Authors",
+          "type": "string"
+        },
+        "year": {
+          "title": "Year",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "title",
+        "authors",
+        "year"
+      ]
+    },
+    "Contributor": {
+      "title": "Contributor",
+      "description": "Define a customized base model.",
+      "type": "object",
+      "properties": {
+        "orcid": {
+          "title": "ORCID",
+          "description": "The ORCID is a nonproprietary alphanumeric code to uniquely identify authors and contributors of scholarly communication.",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "description": "The contributor's full name.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "orcid",
+        "name"
+      ]
+    },
+    "Annotation": {
+      "title": "Annotation",
+      "description": "Define a customized base model.",
+      "type": "object",
+      "properties": {
+        "namespace": {
+          "title": "Namespace",
+          "description": "The MIRIAM compliant prefix of the identifier namespace. MUST be registered at https://identifiers.org/.",
+          "type": "string"
+        },
+        "identifier": {
+          "title": "Identifier",
+          "description": "The actual identifier within the namespace.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "namespace",
+        "identifier"
+      ]
+    },
+    "RepresentativeReaction": {
+      "title": "RepresentativeReaction",
+      "type": "object",
+      "properties": {
+        "rinchi": {
+          "title": "RInChI",
+          "description": "Reaction IUPAC international chemical identifier.",
+          "type": "string"
+        },
+        "rinchiKey": {
+          "title": "RInChIKey",
+          "description": "Hashed version of the reaction IUPAC international chemical identifier.",
+          "type": "string"
+        },
+        "names": {
+          "title": "Common Names",
+          "description": "Common names or synonyms for this reaction mostly to further human understanding.",
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "annotation": {
+          "title": "Annotation",
+          "description": "Cross-references for the reaction.",
+          "default": [],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Annotation"
+          }
+        },
+        "stoichiometry": {
+          "title": "Stoichiometry",
+          "description": "A dictionary of the stoichiometric coefficients and metabolitesthat define this reaction. Includes both reactants (negative coefficients) and products (positive coefficients).",
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "stoichiometry"
+      ]
+    },
+    "CuratedMeasurement": {
+      "title": "CuratedMeasurement",
+      "description": "Define a curated measurement of thermodynamic information and context.",
+      "type": "object",
+      "properties": {
+        "reference": {
+          "title": "Literature Reference",
+          "description": "The official source from which these measurements were curated. Ideally identified by a DOI.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/LiteratureReference"
+            }
+          ]
+        },
+        "curator": {
+          "title": "Contributor",
+          "description": "The person who contributed these measurements.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Contributor"
+            }
+          ]
+        },
+        "representative_reaction": {
+          "title": "Representative Reaction",
+          "description": "The representative biochemical reaction to which the measurements apply.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/RepresentativeReaction"
+            }
+          ]
+        },
+        "equilibriumConstant": {
+          "title": "Equilibrium Constant",
+          "description": "The equilibrium constant ($K$) of this reaction.",
+          "type": "number"
+        },
+        "hydrogenPotential": {
+          "title": "Potential of Hydrogen",
+          "description": "The potential of hydrogen (pH) at which the measurements were performed.",
+          "type": "number"
+        },
+        "magnesiumPotential": {
+          "title": "Potential of Magnesium",
+          "description": "The potential of magnesium (pMg) at which the measurements were performed.",
+          "type": "number"
+        },
+        "temperature": {
+          "title": "Temperature",
+          "description": "The temperature in Kelvin (K) at which the measurements were performed.",
+          "type": "number"
+        },
+        "ionicStrength": {
+          "title": "Ionic Strength",
+          "description": "The molar ionic strength ($I$) of the solution in which the reaction occurred.",
+          "type": "number"
+        }
+      },
+      "required": [
+        "reference",
+        "representative_reaction"
+      ]
+    }
+  }
+}

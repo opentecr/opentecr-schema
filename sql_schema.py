@@ -4,7 +4,7 @@ from opentecr.orm import Base
 
 
 def main():
-    engine = create_engine("sqlite:///dummy.sqlite")
+    engine = create_engine("sqlite:///openTECR.sqlite")
     Base.metadata.create_all(engine)
 
 
