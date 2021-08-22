@@ -1,9 +1,9 @@
-from typing import List, Optional, Dict
+from typing import Dict, List, Optional
 
 from pydantic import Field
 
-from .base import Base
 from .annotation import Annotation
+from .base import Base
 from .metabolite import Metabolite
 
 

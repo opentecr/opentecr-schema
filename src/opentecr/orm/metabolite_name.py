@@ -18,8 +18,8 @@
 
 from sqlalchemy import Column, ForeignKey, Integer, UniqueConstraint
 
-from .mixin import NameMixin, ModelMixin
 from .base import Base
+from .mixin import ModelMixin, NameMixin
 
 
 class MetaboliteName(NameMixin, ModelMixin, Base):

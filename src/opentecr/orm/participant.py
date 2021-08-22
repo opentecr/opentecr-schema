@@ -16,7 +16,7 @@
 """Provide an association between a reaction and its participating metabolites."""
 
 
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, Float
+from sqlalchemy import Boolean, Column, Float, ForeignKey, Integer
 
 from .base import Base
 

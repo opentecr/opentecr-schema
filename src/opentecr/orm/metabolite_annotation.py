@@ -20,8 +20,8 @@
 
 from sqlalchemy import Column, ForeignKey, Integer, UniqueConstraint
 
-from .mixin import AnnotationMixin, ModelMixin
 from .base import Base
+from .mixin import AnnotationMixin, ModelMixin
 
 
 class MetaboliteAnnotation(AnnotationMixin, ModelMixin, Base):
