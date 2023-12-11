@@ -20,6 +20,14 @@ dependencies = [
   "pydantic >= 2.0.0"
 ]
 
+[project.optional-dependencies]
+development = [
+  "black",
+  "isort",
+  "pytest",
+  "tox"
+]
+
 [project.urls]
 homepage = "https://github.com/opentecr/opentecr-schema"
 
