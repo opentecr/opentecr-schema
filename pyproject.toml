@@ -1,10 +1,55 @@
 [build-system]
+requires = ["setuptools"]
 build-backend = 'setuptools.build_meta'
-requires = [
-  'setuptools>=40.6.0',
-  'versioneer-518',
-  'wheel'
+
+[project]
+name = "opentecr-schema"
+version = "0.0.1"
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Science/Research",
+  "Operating System :: MacOS :: MacOS X",
+  "Operating System :: Microsoft :: Windows :: Windows 10",
+  "Operating System :: POSIX",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+description = "Contains the code for the schema of the openTECR database."
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+  "pydantic >= 2.0.0"
 ]
 
+[project.urls]
+homepage = "https://github.com/opentecr/opentecr-schema"
+
 [tool.black]
+line-length = 80
 python-version = ['py38']
+extend-exclude = '''
+/(
+   \.eggs         # exclude a few common directories in the
+  | \.git          # root of the project
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+ignore_missing_imports = true
+plugins = ["pydantic.mypy"]
+follow_imports = "skip"
+strict_optional = true
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true
+  
