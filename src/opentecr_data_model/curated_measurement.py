@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import Field
+from pydantic import Field, ConfigDict
 
 from .base import Base
 from .contributor import Contributor
@@ -10,6 +10,8 @@ from .representative_reaction import RepresentativeReaction
 
 class CuratedMeasurement(Base):
     """Define a curated measurement of thermodynamic information and context."""
+
+    model_config = ConfigDict(title="openTECR Data Model")
 
     reference: LiteratureReference = Field(
         ...,

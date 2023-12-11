@@ -5,8 +5,8 @@
 .PHONY: qa
 ## Apply code quality assurance tools.
 qa:
-	isort src/opentecr scripts/
-	black src/opentecr scripts/
+	isort src/opentecr_data_model scripts/
+	black src/opentecr_data_model scripts/
 
 ################################################################################
 # Self Documenting Commands                                                    #
