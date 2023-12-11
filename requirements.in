@@ -1,2 +1,0 @@
-pydantic ~=1.8
-sqlalchemy ~=1.4
