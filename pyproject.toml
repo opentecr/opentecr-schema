@@ -1,63 +1,115 @@
+################################################################################
+# Build Configuration
+################################################################################
+
 [build-system]
-requires = ["setuptools"]
-build-backend = 'setuptools.build_meta'
+build-backend = "hatchling.build"
+requires = ["hatchling", "hatch-vcs"]
+
+################################################################################
+# Project Configuration
+################################################################################
 
 [project]
 name = "opentecr-schema"
-version = "0.0.1"
-classifiers = [
-  "Development Status :: 2 - Pre-Alpha",
-  "Intended Audience :: Science/Research",
-  "Operating System :: MacOS :: MacOS X",
-  "Operating System :: Microsoft :: Windows :: Windows 10",
-  "Operating System :: POSIX",
-  "Topic :: Scientific/Engineering :: Bio-Informatics",
+description = "contains the code for the schema of the openTECR database"
+authors = [
+    { name = "OpenTECR developers", email = "opentecr@googlegroups.com" }
 ]
-description = "Contains the code for the schema of the openTECR database."
-readme = "README.md"
+maintainers = [
+    { name = "OpenTECR developers", email = "opentecr@googlegroups.com" }
+]
+license = "MIT"
+readme = {"file" = "README.md", "content-type" = "text/markdown"}
 requires-python = ">=3.8"
-dependencies = [
-  "pydantic >= 2.0.0"
+# Please consult https://pypi.org/classifiers/ for a full list.
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Bio-Informatics"
 ]
-
-[project.optional-dependencies]
-development = [
-  "black",
-  "isort",
-  "pytest",
-  "tox"
+# TODO: add keywords
+keywords = []
+dynamic = ["version"]
+dependencies = [
+    "depinfo ~=2.2",
+    "pydantic >= 2.0.0",
 ]
 
 [project.urls]
-homepage = "https://github.com/opentecr/opentecr-schema"
+Homepage = "https://github.com/rgiessman/opentecr-schema"
+Documentation = "https://opentecr-schema.readthedocs.io"
+"Source Code" = "https://github.com/rgiessman/opentecr-schema"
+"Bug Tracker" = "https://github.com/rgiessman/opentecr-schema/issues"
+Download = "https://pypi.org/project/opentecr-schema/#files"
+
+[project.optional-dependencies]
+dev = [
+    "mkdocs-material ~=9.1",
+    "mkdocstrings[python] ~=0.20",
+    "mkdocs-awesome-pages-plugin ~=2.8",
+    "pre-commit",
+    "tox ~=4.0"
+]
+
+################################################################################
+# Tool Configuration
+################################################################################
+
+[tool.hatch.build]
+only-packages = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/opentecr"]
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/opentecr/_version.py"
+
+[tool.hatch.version]
+source = "vcs"
 
 [tool.black]
-line-length = 80
-python-version = ['py38']
+line-length = 88
+python-version = ["py311"]
 extend-exclude = '''
-/(
-   \.eggs         # exclude a few common directories in the
-  | \.git          # root of the project
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-)/
+(
+    _version.py
+)
 '''
 
-[tool.mypy]
-ignore_missing_imports = true
-plugins = ["pydantic.mypy"]
-follow_imports = "skip"
-strict_optional = true
+[tool.isort]
+profile = "black"
+lines_after_imports = 2
+lines_before_imports = 2
+known_first_party = "opentecr"
+skip = ["__init__.py"]
 
-[tool.pydantic-mypy]
-init_forbid_extra = true
-init_typed = true
-warn_required_dynamic_aliases = true
-warn_untyped_fields = true
-  
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["raises"]
+
+[tool.coverage.paths]
+source = [
+    "src/opentecr",
+    "*/site-packages/opentecr"
+]
+
+[tool.coverage.run]
+branch = true
+parallel = true
+
+[tool.coverage.report]
+exclude_lines = ["pragma: no cover"]
+precision = 2
+
+[tool.ruff]
+line-length = 88
+select = ["ALL"]

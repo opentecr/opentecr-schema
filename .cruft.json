@@ -1,0 +1,27 @@
+{
+  "template": "https://github.com/Midnighter/cookiecutter-python-package",
+  "commit": "e8988f2331b6b12f2a78358fcbd78c013b1443c5",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "full_name": "OpenTECR developers",
+      "email": "opentecr@googlegroups.com",
+      "dev_platform": "GitHub",
+      "__dev_platform_url": "https://github.com",
+      "dev_platform_username": "rgiessman",
+      "project_name": "OpenTECR Schema",
+      "project_slug": "opentecr-schema",
+      "project_module": "opentecr",
+      "project_short_description": "contains the code for the schema of the openTECR database",
+      "license": "MIT",
+      "release_date": "2023-12-12",
+      "year": "2023",
+      "_extensions": [
+        "jinja2_time.TimeExtension",
+        "jinja2_strcase.StrcaseExtension"
+      ],
+      "_template": "https://github.com/Midnighter/cookiecutter-python-package"
+    }
+  },
+  "directory": null
+}
