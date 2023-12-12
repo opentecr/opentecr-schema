@@ -113,3 +113,7 @@ precision = 2
 [tool.ruff]
 line-length = 88
 select = ["ALL"]
+ignore = [
+    "TD",  # ignore flake8-todo rules
+    "FIX",  # ignore flake8-fixme rules
+]

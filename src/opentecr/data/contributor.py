@@ -1,9 +1,13 @@
+"""Provides data class Contributor."""
+
+
 from pydantic import Field
 
 from .base import Base
 
 
 class Contributor(Base):
+    """Data about a person who contributes to OpenTECR."""
 
     orcid: str = Field(
         ...,

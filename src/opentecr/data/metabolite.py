@@ -1,14 +1,20 @@
-from typing import List, Optional
+"""Provides dataclass Metabolite."""
+
+
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 from pydantic import Field
 
-from .annotation import Annotation
 from .base import Base
+
+if TYPE_CHECKING:
+    from .annotation import Annotation
 
 
 class Metabolite(Base):
-    """
-    Define a metabolite ORM model.
+    """Define a metabolite ORM model.
 
     Attributes
     ----------
@@ -24,38 +30,39 @@ class Metabolite(Base):
 
     """
 
-    inchi: Optional[str] = Field(
+    inchi: str | None = Field(
         None,
         title="InChI",
         description="IUPAC international chemical identifier.",
     )
-    inchi_key: Optional[str] = Field(
+    inchi_key: str | None = Field(
         None,
         alias="inchiKey",
         title="InChIKey",
         description="IUPAC international chemical identifier hashed key.",
     )
-    smiles: Optional[str] = Field(
+    smiles: str | None = Field(
         None,
         title="SMILES",
         description="Simplified molecular-input line-entry system (SMILES).",
     )
-    molecular_formula: Optional[str] = Field(
+    molecular_formula: str | None = Field(
         None,
         alias="molecularFormula",
         title="Molecular Formula",
         description="The number of atoms in the metabolite.",
     )
     # FIXME: how do we define charge exactly? valence electrons + protons?
-    charge: Optional[float] = Field(None)
+    charge: float | None = Field(None)
     # FIXME: molecular weight, atomic mass, or monoisotopic mass?
-    mass: Optional[float] = Field(None)
-    names: List[str] = Field(
+    mass: float | None = Field(None)
+    names: list[str] = Field(
         (),
         title="Common Names",
         description="Common names or synonyms for this metabolite mostly to further "
         "human understanding.",
     )
-    annotation: List[Annotation] = Field(
-        (), description="Cross-references for the metabolite."
+    annotation: list[Annotation] = Field(
+        (),
+        description="Cross-references for the metabolite.",
     )

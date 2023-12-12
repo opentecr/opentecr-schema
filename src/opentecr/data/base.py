@@ -1,3 +1,5 @@
+"""Provides class Base specifying configuration that is used in all models."""
+
 from pydantic import BaseModel
 
 

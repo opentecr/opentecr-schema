@@ -1,11 +1,18 @@
-from typing import Optional
+"""Provides dataclass CuratedMeasurement."""
+
+
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 from pydantic import Field
 
 from .base import Base
-from .contributor import Contributor
-from .literature_reference import LiteratureReference
-from .representative_reaction import RepresentativeReaction
+
+if TYPE_CHECKING:
+    from .contributor import Contributor
+    from .literature_reference import LiteratureReference
+    from .representative_reaction import RepresentativeReaction
 
 
 class CuratedMeasurement(Base):
@@ -17,7 +24,7 @@ class CuratedMeasurement(Base):
         description="The official source from which these measurements were curated. "
         "Ideally identified by a DOI.",
     )
-    curator: Optional[Contributor] = Field(
+    curator: Contributor | None = Field(
         None,
         title="Contributor",
         description="The person who contributed these measurements.",
@@ -31,33 +38,33 @@ class CuratedMeasurement(Base):
     # FIXME: add fields for units? (also explicitly dimensionless)
     # FIXME: free energy?
     # FIXME: apparent equilibrium constant?
-    equilibrium_constant: Optional[float] = Field(
+    equilibrium_constant: float | None = Field(
         None,
         alias="equilibriumConstant",
         title="Equilibrium Constant",
         description="The equilibrium constant ($K$) of this reaction.",
     )
-    hydrogen_potential: Optional[float] = Field(
+    hydrogen_potential: float | None = Field(
         None,
         alias="hydrogenPotential",
         title="Potential of Hydrogen",
         description="The potential of hydrogen (pH) at which the measurements were "
         "performed.",
     )
-    magnesium_potential: Optional[float] = Field(
+    magnesium_potential: float | None = Field(
         None,
         alias="magnesiumPotential",
         title="Potential of Magnesium",
         description="The potential of magnesium (pMg) at which the measurements were "
         "performed.",
     )
-    temperature: Optional[float] = Field(
+    temperature: float | None = Field(
         None,
         title="Temperature",
         description="The temperature in Kelvin (K) at which the measurements were "
         "performed.",
     )
-    ionic_strength: Optional[float] = Field(
+    ionic_strength: float | None = Field(
         None,
         alias="ionicStrength",
         title="Ionic Strength",
