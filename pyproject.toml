@@ -119,4 +119,5 @@ ignore = [
     "S101",  # allow assert statements 
     "D203",  # we want no blank line before class docstrings
     "D213",  # multiline docstrings should start just after the quotemarks
+    "FA100",  # pydantic/__future__ problem: see https://github.com/astral-sh/ruff/issues/5434
 ]

@@ -1,7 +1,7 @@
 """Provides dataclass CuratedMeasurement."""
 
 
-from __future__ import annotations
+from typing import Optional
 
 from pydantic import Field
 
@@ -20,7 +20,7 @@ class CuratedMeasurement(Base):
         description="The official source from which these measurements were curated. "
         "Ideally identified by a DOI.",
     )
-    curator: Contributor | None = Field(
+    curator: Optional[Contributor] = Field(
         None,
         title="Contributor",
         description="The person who contributed these measurements.",
@@ -34,33 +34,33 @@ class CuratedMeasurement(Base):
     # FIXME: add fields for units? (also explicitly dimensionless)
     # FIXME: free energy?
     # FIXME: apparent equilibrium constant?
-    equilibrium_constant: float | None = Field(
+    equilibrium_constant: Optional[float] = Field(
         None,
         alias="equilibriumConstant",
         title="Equilibrium Constant",
         description="The equilibrium constant ($K$) of this reaction.",
     )
-    hydrogen_potential: float | None = Field(
+    hydrogen_potential: Optional[float] = Field(
         None,
         alias="hydrogenPotential",
         title="Potential of Hydrogen",
         description="The potential of hydrogen (pH) at which the measurements were "
         "performed.",
     )
-    magnesium_potential: float | None = Field(
+    magnesium_potential: Optional[float] = Field(
         None,
         alias="magnesiumPotential",
         title="Potential of Magnesium",
         description="The potential of magnesium (pMg) at which the measurements were "
         "performed.",
     )
-    temperature: float | None = Field(
+    temperature: Optional[float] = Field(
         None,
         title="Temperature",
         description="The temperature in Kelvin (K) at which the measurements were "
         "performed.",
     )
-    ionic_strength: float | None = Field(
+    ionic_strength: Optional[float] = Field(
         None,
         alias="ionicStrength",
         title="Ionic Strength",
