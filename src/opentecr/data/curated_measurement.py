@@ -3,16 +3,12 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 from pydantic import Field
 
 from .base import Base
-
-if TYPE_CHECKING:
-    from .contributor import Contributor
-    from .literature_reference import LiteratureReference
-    from .representative_reaction import RepresentativeReaction
+from .contributor import Contributor  # NOQA: TCH001
+from .literature_reference import LiteratureReference  # NOQA: TCH001
+from .representative_reaction import RepresentativeReaction  # NOQA: TCH001
 
 
 class CuratedMeasurement(Base):

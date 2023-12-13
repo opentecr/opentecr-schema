@@ -3,15 +3,11 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 from pydantic import Field
 
+from .annotation import Annotation  # NOQA: TCH001
 from .base import Base
-
-if TYPE_CHECKING:
-    from .annotation import Annotation
-    from .metabolite import Metabolite
+from .metabolite import Metabolite  # NOQA: TCH001
 
 
 class RepresentativeReaction(Base):
