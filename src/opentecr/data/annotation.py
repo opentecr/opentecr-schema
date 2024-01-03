@@ -1,9 +1,12 @@
+"""Provides dataclass Annotation."""
+
 from pydantic import Field
 
 from .base import Base
 
 
 class Annotation(Base):
+    """A class representing an annotation."""
 
     namespace: str = Field(
         ...,
@@ -11,6 +14,7 @@ class Annotation(Base):
         "registered at https://identifiers.org/.",
     )
     identifier: str = Field(
-        ..., description="The actual identifier within the namespace."
+        ...,
+        description="The actual identifier within the namespace.",
     )
     # FIXME: add a qualifier field?

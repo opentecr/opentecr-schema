@@ -1,10 +1,133 @@
+################################################################################
+# Build Configuration
+################################################################################
+
 [build-system]
-build-backend = 'setuptools.build_meta'
-requires = [
-  'setuptools>=40.6.0',
-  'versioneer-518',
-  'wheel'
+build-backend = "hatchling.build"
+requires = ["hatchling", "hatch-vcs"]
+
+################################################################################
+# Project Configuration
+################################################################################
+
+[project]
+name = "opentecr-schema"
+description = "contains the code for the schema of the openTECR database"
+authors = [
+    { name = "OpenTECR developers", email = "opentecr@googlegroups.com" }
+]
+maintainers = [
+    { name = "OpenTECR developers", email = "opentecr@googlegroups.com" }
+]
+license = "MIT"
+readme = {"file" = "README.md", "content-type" = "text/markdown"}
+requires-python = ">=3.11"
+# Please consult https://pypi.org/classifiers/ for a full list.
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics"
+]
+# TODO: add keywords
+keywords = []
+dynamic = ["version"]
+dependencies = [
+    "depinfo ~=2.2",
+    "pydantic >= 2.0.0",
 ]
 
+[project.urls]
+Homepage = "https://github.com/rgiessman/opentecr-schema"
+Documentation = "https://opentecr-schema.readthedocs.io"
+"Source Code" = "https://github.com/rgiessman/opentecr-schema"
+"Bug Tracker" = "https://github.com/rgiessman/opentecr-schema/issues"
+Download = "https://pypi.org/project/opentecr-schema/#files"
+
+[project.optional-dependencies]
+dev = [
+    "mkdocs-material ~=9.1",
+    "mkdocstrings[python] ~=0.20",
+    "mkdocs-awesome-pages-plugin ~=2.8",
+    "pre-commit",
+    "tox ~=4.0",
+]
+
+################################################################################
+# Tool Configuration
+################################################################################
+
+[tool.hatch.build]
+only-packages = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/opentecr"]
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/opentecr/_version.py"
+
+[tool.hatch.version]
+source = "vcs"
+
 [tool.black]
-python-version = ['py38']
+line-length = 88
+python-version = ["py311"]
+extend-exclude = '''
+(
+    _version.py
+)
+'''
+
+[tool.isort]
+profile = "black"
+lines_after_imports = 2
+lines_before_imports = 2
+known_first_party = "opentecr"
+skip = ["__init__.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["raises"]
+
+[tool.coverage.paths]
+source = [
+    "src/opentecr",
+    "*/site-packages/opentecr"
+]
+
+[tool.coverage.run]
+branch = true
+parallel = true
+
+[tool.coverage.report]
+exclude_lines = ["pragma: no cover"]
+precision = 2
+
+[tool.ruff]
+line-length = 88
+select = ["ALL"]
+ignore = [
+    "TD",  # ignore flake8-todo rules
+    "FIX",  # ignore flake8-fixme rules
+    "D203",  # we want no blank line before class docstrings
+    "D213",  # multiline docstrings should start just after the quotemarks
+    #"FA100",  # pydantic/__future__ problem: see https://github.com/astral-sh/ruff/issues/5434
+]
+
+[tool.ruff.extend-per-file-ignores]
+"test_*.py" = ["S101"]
+
+[tool.mypy]
+plugins = [
+  "pydantic.mypy"
+]
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
